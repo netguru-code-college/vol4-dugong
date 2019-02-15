@@ -4,8 +4,7 @@ rvm:
 before_install:
 - gem install bundler
 before_script:
-- cp config/database.yml.ci config/database.yml
-- psql -c 'create database travis_ci_test;' -U postgres
+- psql -c 'create database so_bad_so_good_test;' -U postgres
 script:
 - bundle exec rails db:migrate RAILS_ENV=test
 - bundle exec rspec
