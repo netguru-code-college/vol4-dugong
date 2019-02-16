@@ -46,6 +46,9 @@ group :development, :test do
 
   # Use rspec for testing
   gem 'rspec-rails', '~> 3.8'
+
+  # Use factory_bot_rails
+  gem 'factory_bot_rails'
 end
 
 group :development do
