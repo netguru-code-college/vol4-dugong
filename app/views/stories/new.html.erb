@@ -1,0 +1,32 @@
+<br />
+<h3>New Story</h3>
+<br />
+
+<%= form_with(model: [ current_user, current_user.stories.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :category %><br />
+    <%= form.label :category, "Bad story", :value => false  %>
+    <%= form.radio_button :category, true %>
+    <%= form.label :category, "Good story", :value => true %>
+    <%= form.radio_button :category, false, :checked => true %>
+  </p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+  <p>
+    <%= form.label :picture %><br>
+    <%= form.file_field :picture  %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
