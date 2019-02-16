@@ -4,6 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.1'
 
 gem 'rails', '~> 5.2.2'
+
+gem 'devise'
+
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
@@ -16,8 +19,22 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
+group :test do
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
+end
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # Use rspec for testing
+  gem 'rspec-rails', '~> 3.8'
+
+  # Use factory_bot_rails
+  gem 'factory_bot_rails'
+
+  # Use capybara
+  gem 'capybara'
 end
 
 group :development do
