@@ -16,8 +16,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+gem 'simple_form'
+
 
 group :test do
   gem 'shoulda-matchers'
@@ -26,14 +27,8 @@ end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
-  # Use rspec for testing
   gem 'rspec-rails', '~> 3.8'
-
-  # Use factory_bot_rails
   gem 'factory_bot_rails'
-
-  # Use capybara
   gem 'capybara'
 end
 
