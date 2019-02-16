@@ -16,7 +16,7 @@ end
 def create
   @user = User.find(params[:user_id])
   @story = @user.stories.create(story_params)
-  redirect_to root_path
+  redirect_to user_stories_path(current_user.id)
 end
 
 private
