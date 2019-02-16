@@ -54,6 +54,9 @@ group :development, :test do
 
   # Use factory_bot_rails
   gem 'factory_bot_rails'
+
+  # Use capybara
+  gem 'capybara'
 end
 
 group :development do
