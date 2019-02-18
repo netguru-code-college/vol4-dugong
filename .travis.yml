@@ -12,6 +12,6 @@ deploy:
   provider: heroku
   api_key:
     secure: tNw7+2Zt1eETFSWLSte/+H7bvee/DeyvSufjx2NYV7vK5x7IuJ+VCe26Je5cml9CCFaPImO4BR6Yhui1vkAKKvyRVmrUrtFiC+xt7zZS8iHdtUYI1aZjkg6/GH/9V0XqlMtn2qphwx4UIEcdEJ5iKghkcP1/hXydCDKkyUmLn3Fpcnev14yi12Oq4XRVkHdjm+FwY9YMCgAbCkidnlIywB7nTAN22qwXvY+j7Qap7ey/+bPyO4rQwPhtsvcPot5uakabaErua5x54epoKSOyBkPVFVpPw0sqRmXrDrq/agmnq75iF99XAeniVEan/9unX9jiLU9fGwMHAHaan5bBbDAYgcXPsUkain6ULxThJFE1tsqPgoRcierrLE9tcAulXAE1I0JvVqHnllmtophxk2Dy/bnirbHnU7oeVR16+PmOdBZkQjR+Eds19wvNbX4RVR0htIY0m0N4j8BkAP3hCpdBot8UNv1PuF1HAEBU0INmBZOWfMNIt7oL5t5RWgcvtlHf/+J3ZnzAHRXR1k+DZAYaO2KSgXV5IiVLYW7yYNbcKXTjFsDZ7Dldwahr+V4ktN9Q5RNyweu/JXt0HtzRBmcW9its4MPGcW6D4ocqWKcNn4NL7J/J38C7gLjRpboH/aD7nXdkx9zHY8qd/8emDP3Jk309EpCfJQcYTT5t5Ms=
-  app: vol-4-dugong
+  app: team-dugong
   on:
     repo: netguru-code-college/vol4-dugong
