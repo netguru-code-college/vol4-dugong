@@ -12,7 +12,7 @@
           <%= link_to "Share Story", new_story_path(current_user.id), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "My stories", stories_path(current_user.id), class: "nav-link" %>
+          <%= link_to "My stories", user_path(current_user.id), class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Map", root_path, class: "nav-link" %>
