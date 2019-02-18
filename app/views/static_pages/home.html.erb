@@ -19,7 +19,7 @@
         <p class="card-text"><%= story.text %></p>
         <p class="card-text"><%= story.picture %></p>
         <p class="card-text"><small class="text-muted">Created: <%= story.created_at.strftime("%Y-%m-%d").to_s %></small></p>
-        <%= link_to "Comment", root_path, class: "card-link" %>
+        <%= link_to "View comments", story_path(story.id), class: "card-link" %>
       </div>
     </div>
       <% end %>
