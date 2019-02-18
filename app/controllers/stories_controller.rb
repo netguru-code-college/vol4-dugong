@@ -8,9 +8,7 @@ def new
 end
 
 def show
-  def show
-    @story = Story.find(params[:id])
-  end
+  @story = Story.find(params[:id])
 end
 
 def create
