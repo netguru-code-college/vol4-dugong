@@ -1,9 +1,5 @@
 class StoriesController < ApplicationController
 
-def index
-  @user = current_user
-end
-
 def new
   @story = Story.new
 end
