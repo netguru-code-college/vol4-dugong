@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2019_02_18_115602) do
     t.index ["followable_type", "followable_id"], name: "index_followers_on_followable_type_and_followable_id"
     t.index ["users_id"], name: "index_followers_on_users_id"
   end
+  
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
