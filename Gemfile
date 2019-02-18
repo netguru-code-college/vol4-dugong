@@ -20,10 +20,16 @@ gem 'jquery-rails'
 gem 'simple_form'
 
 
+
+gem 'rubocop', '~> 0.64.0', require: false
+gem 'kaminari'
+gem 'faker'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
 end
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
