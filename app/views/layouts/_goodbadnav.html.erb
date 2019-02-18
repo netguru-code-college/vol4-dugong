@@ -1,9 +1,0 @@
-<% if @category==Category.first %>
-  <li class="nav-item">
-    <%= link_to "Go Good", category_path("good"), class: "nav-link" %>
-  </li>
-<% else %>
-  <li class="nav-item">
-    <%= link_to "Go Bad", category_path("bad"), class: "nav-link" %>
-  </li>
-<% end %>
