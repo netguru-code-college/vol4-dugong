@@ -1,24 +1,30 @@
 class StoriesController < ApplicationController
 
 def index
-  @user = User.find(params[:user_id])
+  @user = current_user
 end
 
 def new
+  @story = Story.new
 end
 
 def show
-  @story = Story.find(params[:id])
+  # @story = Story.find(params[:id])
 end
 
 def create
-  @user = User.find(params[:user_id])
-  @story = @user.stories.create(story_params)
-  redirect_to user_stories_path(current_user.id)
+  @story = current_user.stories.build(story_params)
+  if @story.save
+    flash[:notice] = "Quote was successfully added. Look for it below. :) "
+    redirect_to root_path
+  else
+    render 'new'
+  end
+
 end
 
 private
   def story_params
-    params.require(:story).permit(:title, :text, :category, :picture)
+    params.require(:story).permit(:title, :text, :category, :picture, :user_id)
   end
 end

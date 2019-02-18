@@ -2,7 +2,7 @@
 <h3>New Story</h3>
 <br />
 
-<%= form_with(model: [ current_user, current_user.stories.build ], local: true) do |form| %>
+<%= form_for @story do |form| %>
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>

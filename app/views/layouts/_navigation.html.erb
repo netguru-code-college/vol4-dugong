@@ -9,10 +9,10 @@
     <% if user_signed_in? %>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <%= link_to "Share Story", new_user_story_path(current_user.id), class: "nav-link" %>
+          <%= link_to "Share Story", new_story_path(current_user.id), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "My stories", user_stories_path(current_user.id), class: "nav-link" %>
+          <%= link_to "My stories", stories_path(current_user.id), class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Map", root_path, class: "nav-link" %>
