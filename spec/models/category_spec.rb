@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should validate_inclusion_of(:name).in_array(['good', 'bad']) }
+  ##### Uncomment  after story model is added
+  # it { should have_many(:stories) }
 end
