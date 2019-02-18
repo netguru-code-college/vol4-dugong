@@ -1,0 +1,24 @@
+<br />
+<h3>New Story</h3>
+<br />
+
+<%= form_for [@category, @story] do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+  <p>
+    <%= form.label :picture %><br>
+    <%= form.file_field :picture  %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

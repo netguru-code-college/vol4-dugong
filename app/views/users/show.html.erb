@@ -1,0 +1,31 @@
+<br/>
+<h3>My stories:</h3>
+<br/>
+<div class="card-columns">
+  <% if @user.stories.count == 0 %>
+    <h2>. . . no stories :(</h2>
+  <% else %>
+    <% @user.stories.reverse.each do |story| %>
+
+      <% if story.category_id == 2 %>
+        <div class="card border-danger" style="width: 18rem;">
+          <div class="card-header">good story</div>
+        <% else %>
+          <div class="card border-primary" style="width: 18rem;">
+            <div class="card-header">bad story</div>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= story.title %></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Location</h6>
+            <p class="card-text"><%= story.text %></p>
+            <p class="card-text"><%= story.picture %></p>
+            <p class="card-text">
+              <small class="text-muted">Created:
+                <%= story.created_at.to_date.to_s %></small>
+            </p>
+          </div>
+        </div>
+
+      <% end %>
+    <% end %>
+  </div>
