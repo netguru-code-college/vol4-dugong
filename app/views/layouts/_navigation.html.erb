@@ -8,9 +8,24 @@
 
     <% if user_signed_in? %>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <%= link_to "Share Story", new_story_path, class: "nav-link" %>
-        </li>
+
+        <% if @category == Category.first %>
+          <li class="nav-item">
+            <%= link_to "Go Good", category_path("good"), class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Go Bad", category_path("bad"), class: "nav-link" %>
+          </li>
+        <% end %>
+
+        <% if @category != nil %>
+            <li class="nav-item">
+              <%= link_to "Share Story", new_category_story_path(@category.name), class: "nav-link" %>
+            </li>
+        <% else %>
+        <% end %>
+
         <li class="nav-item">
           <%= link_to "My stories", user_path(current_user.id), class: "nav-link" %>
         </li>

@@ -7,14 +7,13 @@
   <% else %>
     <% @user.stories.reverse.each do |story| %>
 
-      <% if !story.category %>
+      <% if story.category_id == 2 %>
         <div class="card border-danger" style="width: 18rem;">
           <div class="card-header">good story</div>
         <% else %>
           <div class="card border-primary" style="width: 18rem;">
             <div class="card-header">bad story</div>
           <% end %>
-
           <div class="card-body">
             <h5 class="card-title"><%= story.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted">Location</h6>
