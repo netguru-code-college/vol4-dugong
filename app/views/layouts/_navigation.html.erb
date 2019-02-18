@@ -9,7 +9,7 @@
     <% if user_signed_in? %>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <%= link_to "Share Story", new_story_path(current_user.id), class: "nav-link" %>
+          <%= link_to "Share Story", new_story_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "My stories", user_path(current_user.id), class: "nav-link" %>
@@ -40,7 +40,7 @@
           <%= link_to 'Login', new_user_session_path, :class => "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, method: :delete, :class => "nav-link" %>
+          <%= link_to "Sign up", new_user_registration_path, :class => "nav-link" %>
         </li>
       </ul>
     <% end %>
