@@ -250,7 +250,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   factory_bot_rails
-  friendly_id (~> 5.2.4)
+  friendly_id (~> 5.2, >= 5.2.5)
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
