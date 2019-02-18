@@ -1,1 +1,27 @@
-<h1> Welcome! So good! / So bad! IN PROGRESS <h1>
+<br/>
+<h3>Today's stories:</h3>
+<br/>
+<div class="card-columns">
+    <% if Story.all.count == 0 %>
+      <h2>. . . no stories :(</h2>
+    <% else %>
+      <% Story.all.reverse.each do |story| %>
+      <% if !story.category %>
+        <div class="card border-danger" style="width: 18rem;">
+          <div class="card-header">good story</div>
+      <% else %>
+        <div class="card border-primary" style="width: 18rem;">
+          <div class="card-header">bad story</div>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= story.title %> by <%= User.find(story.user_id).username %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Location</h6>
+        <p class="card-text"><%= story.text %></p>
+        <p class="card-text"><%= story.picture %></p>
+        <p class="card-text"><small class="text-muted">Created: <%= story.created_at.strftime("%Y-%m-%d").to_s %></small></p>
+        <%= link_to "Comment", root_path, class: "card-link" %>
+      </div>
+    </div>
+      <% end %>
+    <% end %>
+</div>
