@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+- 2.6.1
+before_install:
+- gem install bundler
+before_script:
+- psql -c 'create database so_bad_so_good_test;' -U postgres
+script:
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: r5S3m7v56vtba9Oa96d+JjbeCSnKDWBzDcmthStTHBsGav3flQxfx9iz5pb5E3y8Mx5IUKOufsbfxonSymPqc5SfmosaBc94oYDAwa1jfgL0nOwugwbRyDKR/lFLZs8r5Cunyy4WbVczVG2RRYgn1RLTkeeibdLCkR38cJVRtJm1iOSAGZAC6r3fUGc2JsquPb8fbSKXNtfF+EAswt2K6zGv4W56c994vlCasC/ed6cgoKJYRXlbSG5z+Mc1fSxQzV1MZxAuhx1mYtehOwbFlZyROSEyFrpOe+/N/suxIwg1pPsGZMUu7uWHOVO/ajqTY/gZTpRRWehpBNZjLjuwalASvDbOE6oVPMi3kCgrMFnjtVhQ9ZrOt1Y2aYKvnRib7n/B/fNHOOZpdzsnpc2JsQKRw+WYoH+gbqvmgbMnpeRWNscTRAHnr/mdGk0cg4DfklSE82d/3wtqWaFpxb5I76wNh6jyYlk8z+bcKkEF8dibX1Y9RCUpPSV8du5XcfEgERFCR50BVlWKyoICoJ+AR03pZXTEireSuLOWoTlJjIrarDHZJ7S8/sQm67xh5r+2L7ipFp/uChR6FleJ3br60M/pF9Dg6RhpcYq+15PLt/K5uitFHDU10v2koyw1ubr1kdP1FWFaVpkQC4nT00v+6P48t5c7sJQKHLCqBrWZIm8=
+  app: team-dugong
+  on:
+    repo: netguru-code-college/vol4-dugong
