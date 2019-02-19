@@ -16,5 +16,7 @@
         <%= story.created_at.strftime("%Y-%m-%d").to_s %></small>
     </p>
     <%= link_to "View comments", category_story_path(story.category_id, story.id), class: "card-link" %>
+    <%= link_to "Down", category_story_down_path(story.category_id, story.id), method: :post, class: "card-link" %>
+    <%= link_to "Up", category_story_up_path(story.category_id, story.id), method: :post, class: "card-link" %>
     </div>
   </div>

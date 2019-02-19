@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_02_19_134544) do
+=======
+ActiveRecord::Schema.define(version: 2019_02_19_150421) do
+>>>>>>> Add votes, no logic
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,10 +91,22 @@ ActiveRecord::Schema.define(version: 2019_02_19_134544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.boolean "updown"
+    t.bigint "story_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_votes_on_story_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "stories"
   add_foreign_key "comments", "users"
   add_foreign_key "followers", "users"
   add_foreign_key "stories", "categories"
   add_foreign_key "stories", "users"
+  add_foreign_key "votes", "stories"
+  add_foreign_key "votes", "users"
 end
