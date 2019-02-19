@@ -1,22 +1,8 @@
 <br/>
-<div class="card-columns">
+<div class="card-group single_story">
   <% if @story.category_id == 1 %>
-    <%= render "categories/badstory_comments", story: @story %>
+    <%= render "categories/badstory_comments", story: @story, comments: @comments %>
   <% else %>
-    <%= render "categories/goodstory_comments", story: @story %>
+    <%= render "categories/goodstory_comments", story: @story, comments: @comments %>
   <% end %>
-</div>
-
-<div class="<%= @category.name %>-show">
-  TODO: show
-</div>
-<div>
-  <%= render 'comments/form' %>
-</div>
-
-<div>
-  <%= @comments.count %> Comments added
-</div>
-<div class="comments">
-  <%= render @comments %>
 </div>

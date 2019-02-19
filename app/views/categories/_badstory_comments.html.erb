@@ -1,5 +1,4 @@
 <div class="card border-primary" style="width: 18rem;">
-  <div class="card-header">bad story</div>
   <div class="card-body">
     <h5 class="card-title"><%= story.title %>
       by
@@ -17,6 +16,9 @@
     </p>
     <%= link_to "Down", category_story_down_path(story.category_id, story.id), method: :post, class: "card-link" %>
     <%= link_to "Up", category_story_up_path(story.category_id, story.id), method: :post, class: "card-link" %>
-    <h2>ENTER COMMENT!</h2>
+
+
+
+
   </div>
 </div>
