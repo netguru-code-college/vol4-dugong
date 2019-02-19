@@ -6,3 +6,11 @@
     <%= render "categories/goodstory_comments", story: @story %>
   <% end %>
 </div>
+
+
+<div>
+  <%= @comments.count %> Comments added
+</div>
+<div class="comments">
+  <%= render @comments %>
+</div>
