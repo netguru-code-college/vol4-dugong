@@ -1,4 +1,8 @@
-
-
-<h1>this is show action from category controller</h1>
-<h1><%= @category.name %></h1>
+<br/>
+<h3>Today's <%= @category.name %> stories:</h3>
+<br/>
+<% if @category.name == "bad" %>
+  <%= render "categories/badstories" %>
+<% else %>
+  <%= render "categories/goodstories" %>
+<% end %>

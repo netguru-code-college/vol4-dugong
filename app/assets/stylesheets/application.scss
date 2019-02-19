@@ -16,14 +16,9 @@
 
  /* Custom bootstrap variables must be set or imported *before* bootstrap. */
  @import "bootstrap";
-
  body {
    background-color: f8f9fa;
  }
- .navbar {
-     background: linear-gradient(to right, #9AC4F8, #E069A8) !important;
-     background-color: #141a1f;
-   }
  .navbar-text {
      display: inline-block;
      padding-top: 0.5rem;

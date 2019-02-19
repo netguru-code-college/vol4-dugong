@@ -1,63 +1,75 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to "So bad, so good", root_path, class: "navbar-brand", id: "logo" %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<%if @category != nil
+    if @category.name == "bad"
+      help_nav = "background: linear-gradient(to right, #cfe5fc, #f8f9fa);"
+      help_bad = "btn btn-outline-primary" + " " + "active"
+      help_good = "btn btn-outline-danger"
+    else
+      help_nav = "background: linear-gradient(to right, #f6d5d8, #f8f9fa);"
+      help_bad = "btn btn-outline-primary"
+      help_good = "btn btn-outline-danger" + " " + "active"
+    end
+  else
+    help_nav = "background-color: #f8f9fa"
+    help_bad = "btn btn-outline-primary"
+    help_good = "btn btn-outline-danger"
+  end%>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-
-    <% if user_signed_in? %>
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
-        <% if @category == Category.first %>
-          <li class="nav-item">
-            <%= link_to "Go Good", category_path("good"), class: "nav-link" %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Go Bad", category_path("bad"), class: "nav-link" %>
-          </li>
-        <% end %>
-
-        <% if @category != nil %>
+  <nav class="navbar navbar-expand-lg navbar-light" style="<%= help_nav %>">
+    <ul class="nav nav-pills">
+      <li class="nav-item" id="logo_switch">
+        <%= link_to "So Bad", category_path("bad"), class: help_bad %>
+      </li>
+      <li class="nav-item" id="logo_switch">
+        <%= link_to "So Good", category_path("good"), class: help_good %>
+      </li>
+    </ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <% if user_signed_in? %>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <% if @category != nil %>
             <li class="nav-item">
               <%= link_to "Share Story", new_category_story_path(@category.name), class: "nav-link" %>
             </li>
-        <% else %>
-        <% end %>
-
-        <li class="nav-item">
-          <%= link_to "My stories", user_path(current_user.id), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Map", root_path, class: "nav-link" %>
-        </li>
-      </ul>
-      <ul class="navbar-nav text-right">
-        <p class="navbar-text">Logged in as
-          <strong><%= current_user.username %></strong>
-        </p>
-        <li class="nav-item">
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "nav-link" %>
-        </li>
-      </ul>
-    <% else %>
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <%= link_to "Map", root_path, class: "nav-link" %>
-        </li>
-      </ul>
-      <ul class="navbar-nav text-right">
-        <li class="nav-item">
-          <%= link_to 'Login', new_user_session_path, :class => "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, :class => "nav-link" %>
-        </li>
-      </ul>
-    <% end %>
+          <% else %>
+          <% end %>
+          <li class="nav-item">
+            <%= link_to "My stories", user_path(current_user.id), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Map", root_path, class: "nav-link" %>
+          </li>
+        </ul>
+        <ul class="navbar-nav text-right">
+          <p class="navbar-text">Logged in as
+            <strong><%= current_user.username %></strong>
+          </p>
+          <li class="nav-item">
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "nav-link" %>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <% if @category != nil %>
+          <% else %>
+          <% end %>
+          <li class="nav-item">
+            <%= link_to "Map", root_path, class: "nav-link" %>
+          </li>
+        </ul>
+        <ul class="navbar-nav text-right">
+          <li class="nav-item">
+            <%= link_to 'Login', new_user_session_path, :class => "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, :class => "nav-link" %>
+          </li>
+        </ul>
+      <% end %>
     </div>
-</nav>
+  </nav>

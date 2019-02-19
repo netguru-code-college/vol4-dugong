@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
+  root "categories#bad"
   devise_for :users
 
   resources :users

@@ -1,7 +1,6 @@
 <br />
-<h3>New Story</h3>
+<h3>New <%= @category.name %> story:</h3>
 <br />
-
 <%= form_for [@category, @story] do |form| %>
   <p>
     <%= form.label :title %><br>

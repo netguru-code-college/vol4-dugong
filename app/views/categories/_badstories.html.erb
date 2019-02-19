@@ -1,0 +1,9 @@
+<div class="card-columns">
+  <% if Story.where(category_id: 1).count == 0 %>
+    <h2>. . . no stories :(</h2>
+  <% else %>
+    <% Story.where(category_id: 1).reverse.each do |story| %>
+      <%= render "categories/badstory", story: story %>
+    <% end %>
+  <% end %>
+</div>
