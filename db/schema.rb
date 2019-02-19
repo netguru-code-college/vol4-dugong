@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 2019_02_19_134544) do
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id"
+    t.bigint "story_id"
+    t.index ["story_id"], name: "index_comments_on_story_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "followers", force: :cascade do |t|
     t.bigint "user_id"
     t.string "followable_type"
@@ -79,8 +87,10 @@ ActiveRecord::Schema.define(version: 2019_02_19_134544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "followers", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "stories"
+  add_foreign_key "comments", "users"
+  add_foreign_key "followers", "users"
   add_foreign_key "stories", "categories"
   add_foreign_key "stories", "users"
 end
