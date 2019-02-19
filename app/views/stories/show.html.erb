@@ -5,5 +5,5 @@
     else
       @hlp_class = "danger"
     end %>
-  <%= render "categories/single_story", hlp_class: @hlp_class, story: @story, comments: @comments %>
+  <%= render "stories/single_story_with_comments", hlp_class: @hlp_class, story: @story, comments: @comments %>
 </div>
