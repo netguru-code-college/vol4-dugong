@@ -1,8 +1,9 @@
 <br/>
 <div class="card-group single_story">
-  <% if @story.category_id == 1 %>
-    <%= render "categories/badstory_comments", story: @story, comments: @comments %>
-  <% else %>
-    <%= render "categories/goodstory_comments", story: @story, comments: @comments %>
-  <% end %>
+  <% if @story.category_id == 1
+      @hlp_class = "primary"
+    else
+      @hlp_class = "danger"
+    end %>
+  <%= render "categories/single_story", hlp_class: @hlp_class, story: @story, comments: @comments %>
 </div>

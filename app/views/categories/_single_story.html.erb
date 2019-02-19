@@ -1,4 +1,4 @@
-<div class="card border-danger" style="width: 18rem;">
+<div class="card border-<%= hlp_class %>" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><%= story.title %>
       by
@@ -16,14 +16,14 @@
     </p>
     <div class="btn-group" role="group" aria-label="Basic example">
       <%= link_to "Not so good", category_story_down_path(story.category_id, story.id), method: :post, class: "btn btn-secondary" %>
-      <%= link_to "Really good", category_story_up_path(story.category_id, story.id), method: :post, class: "btn btn-danger" %>
+      <%= link_to "Really good", category_story_up_path(story.category_id, story.id), method: :post, class: "btn btn-" + hlp_class %>
     </div>
     <br>
     <br>
     <ul class="list-group list-group-flush">
       <% comments.each do |comment| %>
         <li class="list-group-item">
-          <%= link_to User.find(comment.user_id).username, user_path(comment.user_id) %> :
+          <%= link_to User.find(comment.user_id).username, user_path(comment.user_id) %>:
           <%= comment.body %>
         </li>
       <% end %>
