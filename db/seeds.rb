@@ -61,3 +61,10 @@ User.all.each do |user|
     story.save!
   end
 end
+
+#Comments
+Story.all.each do |story|
+  rand(10).times do
+    story.comments.create(body: Faker::TvShows::SouthPark.quote, user_id: rand(20))
+  end
+end
