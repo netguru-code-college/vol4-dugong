@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_094931) do
+ActiveRecord::Schema.define(version: 2019_02_19_134544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,13 +45,13 @@ ActiveRecord::Schema.define(version: 2019_02_19_094931) do
   end
 
   create_table "followers", force: :cascade do |t|
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.string "followable_type"
     t.bigint "followable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followable_type", "followable_id"], name: "index_followers_on_followable_type_and_followable_id"
-    t.index ["users_id"], name: "index_followers_on_users_id"
+    t.index ["user_id"], name: "index_followers_on_user_id"
   end
 
   create_table "stories", force: :cascade do |t|
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_094931) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "followers", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "followers", "users", column: "users_id"
   add_foreign_key "stories", "categories"
   add_foreign_key "stories", "users"
 end
