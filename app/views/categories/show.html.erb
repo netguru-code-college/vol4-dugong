@@ -1,7 +1,7 @@
 <br/>
 <h3>Today's <%= @category.name %> stories:</h3>
 <br/>
-<% if @category.name == "bad" %>
+<% if @category.id == 1 %>
   <%= render "categories/badstories" %>
 <% else %>
   <%= render "categories/goodstories" %>
