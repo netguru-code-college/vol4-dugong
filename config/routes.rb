@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'followers/follow_user'
+  get 'followers/unfollow_user'
   root "categories#bad"
   devise_for :users
 

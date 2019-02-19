@@ -1,0 +1,9 @@
+<div class="follows" id="#user_<%= @user.id %>">
+  <% unless @user == current_user %>
+      <% if current_user.following?(@user) %>
+          <%= link_to 'Unfollow', user_unfollow_path(@user), class: 'btn unfollow-btn', method: :put, remote: true %>
+      <% else %>
+          <%= link_to 'Follow', user_follow_path(@user), class: 'btn follow-btn', method: :put, remote: true %>
+      <% end %>
+  <% end %>
+</div>
