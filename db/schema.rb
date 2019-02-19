@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_02_19_134544) do
-=======
 ActiveRecord::Schema.define(version: 2019_02_19_150421) do
->>>>>>> Add votes, no logic
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
