@@ -11,11 +11,12 @@
     <% end %>
 
     <p class="card-text">
-      <small class="text-muted">Created:
-        <%= story.created_at.strftime("%Y-%m-%d").to_s %></small>
-    </p>
+    <small class="text-muted">Created: <%= story.created_at.strftime("%Y-%m-%d").to_s %></small></p>
+    <p class="card-text">
+    <small class="text-muted"><%= a = story.votes.where(updown: true).count %> <%= a == 1 ? 'person is ' : 'people are '%>touched
+    and <%= a = story.votes.where(updown: false).count %> <%= a == 1 ? 'person does ' : 'people do '%>not feel it</small></p> 
+   
     <div class="btn-group" role="group" aria-label="Basic example">
-
       <% if user_signed_in? %>
         <% if Vote.where(user_id: current_user.id, story_id: story.id).empty? %>
           <%= link_to "Not so " + @category.name, category_story_down_path(story.category_id, story.id), method: :post, class: "btn btn-secondary"%>
@@ -26,7 +27,6 @@
       <% else %>
         <%= link_to "Login to vote", new_user_session_path, class: "btn btn-outline-primary" , disabled: true %>
       <% end %>
-
     </div>
     <br>
     <br>
