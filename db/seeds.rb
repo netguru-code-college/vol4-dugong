@@ -50,7 +50,7 @@ end
 
 # BADSTORIES:
 User.all.each do |user|
-    rand(0..3)times do
+    rand(0..3).times do
       rork = rand(0...num_of_pictures)
       story = Story.new
       story.title = bad_titles.sample
