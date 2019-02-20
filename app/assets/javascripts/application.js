@@ -17,3 +17,24 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+// Function for map displaying
+function passParam(latit, lang){
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: latit, lng: lang},
+    zoom: 8
+  });
+
+  marker = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    animation: google.maps.Animation.DROP,
+    position: {lat: latit, lng: lang}
+  });
+
+  google.maps.event.addListener(marker, 'dragend', function() {
+  console.log(this.getPosition().lat());
+  console.log(this.getPosition().lng());
+  })
+}

@@ -1,29 +1,10 @@
 <script>
 var map;
   function initMap() {
-    function passParam(latit, lang){
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: latit, lng: lang},
-        zoom: 8
-      });
-
-      marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: {lat: latit, lng: lang}
-      });
-
-      google.maps.event.addListener(marker, 'dragend', function(m) {
-      id_point = this.title;
-      console.log("Point: "+id_point);
-      console.log(this.getPosition().lat()); // same as below
-      console.log(m.latLng.lat());
-      })
-    }
-  passParam(53.1235,18.0084)
+  passParam(<%= @last_location.latitude %>,<%= @last_location.longitude %>)
   }
 </script>
+
 
 <br />
 <h3>New Story</h3>

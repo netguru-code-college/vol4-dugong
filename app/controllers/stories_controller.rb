@@ -4,10 +4,15 @@ class StoriesController < ApplicationController
 def new
   @story = Story.new
   @location = Location.new
+
+  # Set up marker in last location
+  @last_location = current_user.stories.last.location ||
+                    Location.build(latitude: 53.1235, longitude: 18.0084)
+
+
 end
 
 def show
-
   @story = Story.find(params[:id])
   @comments = @story.comments
 end
