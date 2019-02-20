@@ -1,17 +1,40 @@
-<br/>
-<h3>Today's <%= @category.name %> stories:</h3>
-<br/>
-<div class="card-columns">
-  <% if Story.where(category_id: @category.id).count == 0 %>
-    <h2>. . . no stories :(</h2>
-  <% else %>
-    <% Story.where(category_id: @category.id).reverse.each do |story| %>
-      <% if story.category_id == 1
-        @hlp_class = "primary"
-      else
-        @hlp_class = "danger"
-      end %>
-      <%= render "categories/single_story", hlp_class: @hlp_class, story: story %>
-    <% end %>
-  <% end %>
-</div>
+<div class="row">
+  <div class="col-sm">
+    <div class="lol", position:="fixed">
+      <br/>
+      <h3><%= @category.name.capitalize %> ranking:</h3>
+      <br/>
+      <h5>Top <%= @how_many_in_ranking %> from <%= @stories_in_cat %></h5>
+      <ol>
+          <% @how_many_in_ranking.times do %>
+          <li>
+            <% view = @rank.pop %>
+            <p> <%= view.first.title %> by <%= User.find(view.first.user_id).username %> , score: <%= view.last %></p>
+          </li>
+          <% end %>
+      </ol>
+    </div>
+  </div>
+  <div class="col-lg">
+    <br/>
+    <h3>Today's
+      <%= @category.name %>
+      stories:</h3>
+    <br/>
+    <div class="card-columns">
+      <% if Story.where(category_id: @category.id).count == 0 %>
+        <h2>. . . no stories :(</h2>
+      <% else %>
+        <% Story.where(category_id: @category.id).reverse.each do |story| %>
+          <% if story.category_id == 1
+              @hlp_class = "primary"
+            else
+              @hlp_class = "danger"
+            end %>
+            <%= render "categories/single_story", hlp_class: @hlp_class, story: story %>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
