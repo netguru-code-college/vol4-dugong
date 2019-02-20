@@ -57,6 +57,9 @@
           </li>
         </ul>
         <ul class="navbar-nav text-right">
+          <li class="nav-item">
+            <%= link_to pluralize(Notification.unread_count(current_user), 'Notification'), notifications_path, :class => "badge badge-primary mr-3" %>
+          </li>
           <p class="navbar-text">Logged in as
             <strong><%= current_user.username %></strong>
           </p>

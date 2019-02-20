@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   root "categories#bad"
   devise_for :users
 
-  resources :users
-
   post '/users/:id/follow_user', to: 'followers#follow_user', as: :follow_user
   post '/users/:id/unfollow_user', to: 'followers#unfollow_user', as: :unfollow_user
 
