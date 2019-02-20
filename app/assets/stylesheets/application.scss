@@ -32,15 +32,11 @@ footer {
   font-size: 0.7em;
   color: #6c757d;
 }
-// .card-columns {
-//   @include media-breakpoint-only(lg) {
-//     column-count: 2;
-//   }
-//   @include media-breakpoint-only(xl) {
-//     column-count: 3;
-//   }
-// }
-
 .card-group.single_story {
   max-width: 35% !important;
+}
+.ranking{
+}
+.list-group {
+  //max-width: 25rem;
 }

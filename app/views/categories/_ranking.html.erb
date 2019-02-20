@@ -1,0 +1,12 @@
+<div class="list-group">
+  <% title = @category.name.capitalize + " ranking (" + @stories_in_cat.to_s + " stories):" %>
+   <li class="list-group-item list-group-item-<%= hlp_class %>"><%= title %></li>
+  <% @how_many_in_ranking.times do |i|%>
+    <% view = @rank.pop
+    rank_title = (i+1).to_s + ". " + view.first.title + " by " + User.find(view.first.user_id).username + " (" + view.last.to_s + ")"
+    %>
+    <%= link_to rank_title, category_story_path(@category.id, view.first.id), class: "list-group-item list-group-item-action"%>
+  <% end %>
+</div>
+<br>
+<br>

@@ -17,7 +17,7 @@ user.password = 'asdjkl'
 user.save!
 
 # USERS:
-35.times do
+60.times do
   user = User.new
   user.username = Faker::Name.first_name
   user.email = Faker::Internet.email(user.username)
@@ -54,29 +54,35 @@ require 'open-uri'
 
 # BADSTORIES:
 User.all.each do |user|
-  rand(0..1).times do
-    story = Story.new
-    story.title = bad_titles.sample
-    story.text = Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote
-    download = open('https://source.unsplash.com/320x240/?sad')
-    story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
-    story.user_id = user.id
-    story.category_id = 1
-    story.save!
+  if rand(2).zero?
+    rand(0..1).times do
+      story = Story.new
+      story.title = bad_titles.sample
+      story.text = Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote
+      download = open('https://source.unsplash.com/320x240/?sad')
+      story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
+      story.user_id = user.id
+      story.category_id = 1
+      story.save!
+    end
+  else
   end
 end
 
 # GOODSTORIES:
 User.all.each do |user|
-  rand(0..1).times do
-    story = Story.new
-    story.title = good_titles.sample
-    story.text = Faker::Movies::Lebowski.quote
-    download = open('https://source.unsplash.com/320x240/?happy')
-    story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
-    story.user_id = user.id
-    story.category_id = 2
-    story.save!
+  if rand(2).zero?
+    rand(0..1).times do
+      story = Story.new
+      story.title = good_titles.sample
+      story.text = Faker::Movies::Lebowski.quote
+      download = open('https://source.unsplash.com/320x240/?happy')
+      story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
+      story.user_id = user.id
+      story.category_id = 2
+      story.save!
+    end
+  else
   end
 end
 
