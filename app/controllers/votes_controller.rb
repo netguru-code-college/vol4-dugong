@@ -22,7 +22,6 @@ class VotesController < ApplicationController
     end
 
     redirect_to category_story_path(Category.find(params[:category_id]), @story.id)
-
   end
 
   private

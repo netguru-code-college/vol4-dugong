@@ -4,11 +4,30 @@
       <br/>
       <h3><%= @category.name.capitalize %> ranking:</h3>
       <br/>
-      <h5>Top <%= @how_many_in_ranking %> from <%= @num_bad_stories %></h5>
+      <%
+      how_many_in_ranking = 10
+      num_bad_stories = Story.where(category_id: @category.id).count
+      story_hash = {}
+
+      Story.where(category_id: @category.id).each do |story|
+        points = 0
+        story.votes.each do |vote|
+          if vote
+            points += 1
+          else
+            points -= 1
+          end
+        end
+        story_hash[story] = points
+      end
+      rank = story_hash.sort_by {|_key, value| value}
+      %>
+
+      <h5>Top <%= how_many_in_ranking %> from <%= num_bad_stories %></h5>
       <ol>
-          <% @how_many_in_ranking.times do %>
+          <% how_many_in_ranking.times do %>
           <li>
-            <% view = @rank.pop %>
+            <% view = rank.pop %>
             <p> <%= view.first.title %> by <%= User.find(view.first.user_id).username %> , score: <%= view.last %></p>
           </li>
           <% end %>
