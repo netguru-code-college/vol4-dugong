@@ -36,5 +36,7 @@ function passParam(latit, lang){
   google.maps.event.addListener(marker, 'dragend', function() {
   console.log(this.getPosition().lat());
   console.log(this.getPosition().lng());
+  $('input#story_latitude').val(this.getPosition().lat())
+  $('input#story_longitude').val(this.getPosition().lng())
   })
 }

@@ -5,4 +5,6 @@ class Story < ApplicationRecord
   has_one_attached :picture
   has_many :comments
   has_many :votes, dependent: :destroy
+  accepts_nested_attributes_for :location
+  attr_accessor :latitude, :longitude
 end
