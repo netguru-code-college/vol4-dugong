@@ -25,6 +25,8 @@ gem 'notifications', '~> 0.6.0'
 gem 'rubocop', '~> 0.64.0', require: false
 gem 'kaminari'
 gem 'faker'
+gem 'notifications'
+
 
 group :test do
   gem 'shoulda-matchers'
