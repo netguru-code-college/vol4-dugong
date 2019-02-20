@@ -19,6 +19,18 @@
  body {
    background-color: f8f9fa;
  }
+ .bad, .good {
+   font-size: 0.6em;
+   border-style: dashed;
+   margin-left: 4px;
+   margin-right: 4px;
+ }
+ .bad_a, .good_a {
+   font-size: 1.7em;
+   border-style: solid;
+   margin-left: 4px;
+   margin-right: 4px;
+ }
  .navbar-text {
      display: inline-block;
      padding-top: 0.5rem;
