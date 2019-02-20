@@ -17,7 +17,7 @@ user.password = 'asdjkl'
 user.save!
 
 # USERS:
-50.times do
+35.times do
   user = User.new
   user.username = Faker::Name.first_name
   user.email = Faker::Internet.email(user.username)
@@ -26,33 +26,40 @@ user.save!
 end
 
 good_titles = [
-  'Yes!', 'Hurra!', 'This is really cool!', ':)', 'Nice!', 'Landed a job!',
-  ':D', 'Best thing ever!', 'Happy!', 'Proud...', 'LOL', 'I feel lucky'
-]
-bad_titles = [
-  'Oh no!', 'Shit!', 'Fu*k', 'Help', ':(', ';(', 'Nein!', ':[',
-  'Of course!', 'This sucks!', 'Worst day ever', 'Yikes!', 'Noooo',
-  ':(((((', 'OMG!', 'Oh my god!', 'I am so lucky :/', 'You wont believe',
-  'Just my luck', 'Sutpid Boss', 'Dead Cat'
+  'Yes!', 'Hurray!', 'This is really cool!', ':)', 'Nice!', 'Landed a job!',
+  ':D', 'Best day ever!', 'Happy!', 'Proud.', 'LOL', 'Lucky','Landed kick-flip',
+  'Half-life 3 comming', ':))))))', 'Won Contest!', 'Awesome!', 'Beautiful day', 'A welcome sight',
+  'Afternoon delight', 'Happy with my family', 'Colour me happy', "Don't worry, be happy",
+  'Happy hour', 'In seventh heaven', 'Appetite for life', 'Dancing on air',
+  'Perfect day', 'Hallelujah!', 'Heart warming', 'Holidays!!!', 'Promotion!',
+  "You know what? I'm happy", 'Happy as a pig in muck', "couldn't be happier",
+  "Good five-cent cigar", 'Good deal', 'Heart of gold'
 ]
 
-ar_gdpath = []
-ar_bdpath = []
-path = 'app/assets/images/'
-num_of_pictures = 8
-num_of_pictures.times do |i|
-  ar_gdpath[i] = [path + 'good/' + (i + 1).to_s + '.jpg', (i + 1).to_s + '.jpg']
-  ar_bdpath[i] = [path + 'bad/' + (i + 1).to_s + '.jpg', (i + 1).to_s + '.jpg']
-end
+bad_titles = [
+  'Oh no!', 'Shit!', 'Fu*k', 'Help!!!', ':(', ';(', 'Nein!', ':[',
+  'Of course!', 'This sucks!', 'Worst day ever', 'Yikes!', 'Noooo',
+  'Broken toe', "Lost job", "Offically betrayed",
+  ':(((((', "I can't stand it", 'Oh my god!', 'You wont believe :(',
+  'Just my luck', 'Sutpid Boss', 'Dead Cat', 'Never satisfied',
+  'How sad is that?', 'Long face', 'I hate it!', 'Feeling blue', 'Blue',
+  'Sadder and wiser man', 'The deep blue sea', 'The low down', 'What a drag',
+  'Out of the blue', 'Miserable specimen', "I'm A Loser",
+  'A lump in the throat', 'Blue Monday', 'Broken man', 'Broken heart',
+  'Depths of despair', 'Down in the dumps', 'Feeling blue', 'It burns me up',
+  'Man Of Constant Sorrow', 'Reduced to tears', 'Sad sack'
+]
+
+require 'open-uri'
 
 # BADSTORIES:
 User.all.each do |user|
-  rand(0..3).times do
-    rork = rand(0...num_of_pictures)
+  rand(0..1).times do
     story = Story.new
     story.title = bad_titles.sample
-    story.text = Faker::Quotes::Shakespeare.hamlet_quote
-    story.picture.attach(io: File.open(ar_bdpath[rork].first), filename: ar_bdpath[rork].second, content_type: 'image/jpg')
+    story.text = Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote
+    download = open('https://source.unsplash.com/320x240/?sad')
+    story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
     story.user_id = user.id
     story.category_id = 1
     story.save!
@@ -61,12 +68,12 @@ end
 
 # GOODSTORIES:
 User.all.each do |user|
-  rand(0..3).times do
-    rork = rand(0...num_of_pictures)
+  rand(0..1).times do
     story = Story.new
     story.title = good_titles.sample
     story.text = Faker::Movies::Lebowski.quote
-    story.picture.attach(io: File.open(ar_gdpath[rork].first), filename: ar_gdpath[rork].second, content_type: 'image/jpg')
+    download = open('https://source.unsplash.com/320x240/?happy')
+    story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
     story.user_id = user.id
     story.category_id = 2
     story.save!
