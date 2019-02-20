@@ -7,11 +7,12 @@
 <% else %>
   <div class="card-columns">
     <% @user.stories.reverse.each do |story| %>
-      <% if story.category_id == 1 %>
-        <%= render "categories/badstory", story: story %>
-      <% else %>
-        <%= render "categories/goodstory", story: story %>
-      <% end %>
+      <% if story.category_id == 1
+        @hlp_class = "primary"
+      else
+        @hlp_class = "danger"
+      end %>
+      <%= render "categories/single_story", hlp_class: @hlp_class, story: story %>
     <% end %>
   <% end %>
 </div>

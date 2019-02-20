@@ -1,22 +1,9 @@
 <br/>
-<div class="card-columns">
-  <% if @story.category_id == 1 %>
-    <%= render "categories/badstory_comments", story: @story %>
-  <% else %>
-    <%= render "categories/goodstory_comments", story: @story %>
-  <% end %>
-</div>
-
-<div class="<%= @category.name %>-show">
-  TODO: show
-</div>
-<div>
-  <%= render 'comments/form' %>
-</div>
-
-<div>
-  <%= @comments.count %> Comments added
-</div>
-<div class="comments">
-  <%= render @comments %>
+<div class="card-group single_story">
+  <% if @story.category_id == 1
+      @hlp_class = "primary"
+    else
+      @hlp_class = "danger"
+    end %>
+  <%= render "stories/single_story_with_comments", hlp_class: @hlp_class, story: @story, comments: @comments %>
 </div>

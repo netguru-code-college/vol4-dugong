@@ -1,10 +1,5 @@
-<div class="card custom-margin">
-  <div class="card-body">
-    <h5>Give us your opinion</h5>
-    <%= simple_form_for [@category, @story, @story.comments.build]  do |f| %>
-      <%= f.error_notification %>
-      <%= f.input :body, label: false, placeholder: "Tell us what you think" %>
-      <%= f.button :submit, class: "btn-primary" %>
-    <% end %>
-  </div>
-</div>
+<%= simple_form_for [@category, @story, @story.comments.build] do |f| %>
+<%= f.error_notification %>
+<%= f.input :body, label: false, placeholder: "Your comment" %>
+<%= f.button :submit, class: "btn-primary" %>
+<% end %>
