@@ -15,7 +15,7 @@ def create
   @story.category = @category
 
   if @story.save
-    flash[:notice] = "Story was successfully added. Look for it below. :) "
+    flash[:success] = "Story was successfully added. Look for it below. :) "
     redirect_to category_path(@category.id)
   else
     render 'new'
