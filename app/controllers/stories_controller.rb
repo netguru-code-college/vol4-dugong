@@ -6,7 +6,7 @@ def new
   @location = Location.new
   @last_location = last_location
 end
-@last_location = !!current_user.stories.last.location || Location.build(latitude: 53.1235, longitude: 18.0084)
+
 def show
   @story = Story.find(params[:id])
   @comments = @story.comments

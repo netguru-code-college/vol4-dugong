@@ -25,6 +25,9 @@ user.save!
   user.save!
 end
 
+#Locations
+30.times { Location.create(latitude: rand(5004..5343)/100, longitude: rand(1455..2200)/100)}
+
 good_titles = [
   "Yes!", "Hurra!", "This is really cool!", ":)", "Nice!", "Landed a job!",
   ":D", "Best thing ever!", "Happy!", "Proud...", "LOL", "I feel lucky"
@@ -55,6 +58,7 @@ User.all.each do |user|
       story.picture.attach(io: File.open(ar_bdpath[rork].first), filename: ar_bdpath[rork].second, content_type: 'image/jpg')
       story.user_id = user.id
       story.category_id = 1
+      story.location_id = rand(1..Location.count)
       story.save!
   end
 end
@@ -69,6 +73,7 @@ User.all.each do |user|
     story.picture.attach(io: File.open(ar_gdpath[rork].first), filename: ar_gdpath[rork].second, content_type: 'image/jpg')
     story.user_id = user.id
     story.category_id = 2
+    story.location_id = rand(1..Location.count)
     story.save!
   end
 end
