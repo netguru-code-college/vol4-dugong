@@ -25,6 +25,8 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'rubocop', '~> 0.64.0', require: false
 gem 'kaminari'
 gem 'faker'
+gem 'notifications'
+
 
 group :test do
   gem 'shoulda-matchers'
