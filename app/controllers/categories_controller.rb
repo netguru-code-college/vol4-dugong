@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
 
   def ranking
     @how_many_in_ranking = 10
-    @num_bad_stories = @category.stories.count
+    @stories_in_cat = @category.stories.count
 
     story_hash = {}
     @category.stories.each do |story|
