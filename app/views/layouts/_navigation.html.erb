@@ -41,6 +41,22 @@
           <li class="nav-item">
             <%= link_to "Map", root_path, class: "nav-link" %>
           </li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              My following users
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% if current_user.followers.any? %>
+                <% current_user.followers.each do |follower| %>
+                  <%= link_to follower.followable.username, 
+                  user_path(follower.followable), 
+                  class: "dropdown-item" %>
+                <% end %>
+              <% else %>
+                <a class="dropdown-item" href="#">You don't follow any user</a>
+              <% end %>
+            </div>
+          </div>
         </ul>
         <ul class="navbar-nav text-right">
           <p class="navbar-text">Logged in as
