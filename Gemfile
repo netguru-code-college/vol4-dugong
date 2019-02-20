@@ -19,7 +19,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
-
+gem 'notifications', '~> 0.6.0'
 
 
 gem 'rubocop', '~> 0.64.0', require: false
