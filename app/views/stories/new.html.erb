@@ -26,12 +26,9 @@ var map;
     <%= form.file_field :picture  %>
   </p>
 
-  <p>
-    <%= form.text_field :latitude %>
-  </p>
-  <p>
-    <%= form.text_field :longitude %>
-  </p>
+  <%= form.hidden_field :latitude %>
+  <%= form.hidden_field :longitude %>
+
   <p>
     <div id="map"></div>
   </p>

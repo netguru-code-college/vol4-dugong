@@ -32,6 +32,10 @@ function passParam(latit, lang){
     animation: google.maps.Animation.DROP,
     position: {lat: latit, lng: lang}
   });
+  $( document ).ready(function() {
+    $('input#story_latitude').val(latit)
+    $('input#story_longitude').val(lang)
+});
 
   google.maps.event.addListener(marker, 'dragend', function() {
   console.log(this.getPosition().lat());
@@ -39,4 +43,5 @@ function passParam(latit, lang){
   $('input#story_latitude').val(this.getPosition().lat())
   $('input#story_longitude').val(this.getPosition().lng())
   })
+
 }
