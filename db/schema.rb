@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_02_20_144855) do
-=======
 ActiveRecord::Schema.define(version: 2019_02_20_123034) do
->>>>>>> Start notification config
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_02_20_123034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
+
   create_table "notifications", id: :serial, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "actor_id"
