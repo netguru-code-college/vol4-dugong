@@ -1,23 +1,27 @@
-<br />
-<h4>New <%= @category.name %> story:</h4>
-<br />
-<%= form_for [@category, @story] do |form| %>
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
+<script>
+var map;
+  function initMap() {
+  passParam(<%= @last_location.latitude %>,<%= @last_location.longitude %>)
+  }
+</script>
 
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
+<div class="col-md-3 offset-md-4">
+  <h3>New <%= @category.name %> story:</h3>
+</div>
+<div class="col-md-6 offset-md-3">
+  <%= simple_form_for [@category, @story] do |f| %>
+      <%= f.input :title %><br>
+      <%= f.input :text %>
+      <%= f.input :picture  %>
+      <%= f.hidden_field :latitude %>
+      <%= f.hidden_field :longitude %>
+      <p>
+        <div id="map"></div>
+      </p>
+      <%= f.button :submit, class: "btn-primary" %>
+  <% end %>
+</div>
 
-  <p>
-    <%= form.label :picture %><br>
-    <%= form.file_field :picture  %>
-  </p>
 
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjgGhXinH64krgo0SkV_SbIEfzQ9h6OuE&callback=initMap"
+    async defer></script>

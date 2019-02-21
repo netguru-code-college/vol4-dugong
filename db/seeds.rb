@@ -25,6 +25,16 @@ user.save!
   user.save!
 end
 
+#Locations
+30.times do |n|
+  lat = rand(5004..5343)/100.0
+  long = rand(1455..2200)/100.0
+  city_name = Geocoder.search("#{lat},#{long}").first.city
+  city_name = "almost nowhere" if city_name.nil?
+  city = City.where(name: city_name).first || City.create(name: city_name)
+   Location.create(latitude: lat, longitude: long, city: city)
+end
+
 good_titles = [
   'Yes!', 'Hurray!', 'This is really cool!', ':)', 'Nice!', 'Landed a job!',
   ':D', 'Best day ever!', 'Happy!', 'Proud.', 'LOL', 'Lucky','Landed kick-flip',
@@ -54,35 +64,31 @@ require 'open-uri'
 
 # BADSTORIES:
 User.all.each do |user|
-  if rand(2).zero?
-    rand(0..1).times do
-      story = Story.new
-      story.title = bad_titles.sample
-      story.text = Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote
-      download = open('https://source.unsplash.com/320x240/?sad')
-      story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
-      story.user_id = user.id
-      story.category_id = 1
-      story.save!
-    end
-  else
+  if user.id.odd?
+    story = Story.new
+    story.title = bad_titles.sample
+    story.text = Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote
+    download = open('https://source.unsplash.com/320x240/?sad')
+    story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
+    story.user_id = user.id
+    story.location_id = rand(1..Location.count)
+    story.category_id = 1
+    story.save!
   end
 end
 
 # GOODSTORIES:
 User.all.each do |user|
-  if rand(2).zero?
-    rand(0..1).times do
-      story = Story.new
-      story.title = good_titles.sample
-      story.text = Faker::Movies::Lebowski.quote
-      download = open('https://source.unsplash.com/320x240/?happy')
-      story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
-      story.user_id = user.id
-      story.category_id = 2
-      story.save!
-    end
-  else
+  if user.id.even?
+    story = Story.new
+    story.title = good_titles.sample
+    story.text = Faker::Movies::Lebowski.quote
+    download = open('https://source.unsplash.com/320x240/?happy')
+    story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
+    story.user_id = user.id
+    story.location_id = rand(1..Location.count)
+    story.category_id = 2
+    story.save!
   end
 end
 

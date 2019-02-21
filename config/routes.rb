@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Notifications::Engine => "/notifications"
   root "categories#bad"
   devise_for :users
 

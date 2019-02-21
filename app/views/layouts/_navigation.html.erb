@@ -16,11 +16,11 @@
 
   <nav class="navbar navbar-expand-lg navbar-light" style="<%= help_nav %>">
     <ul class="nav nav-pills">
-      <li class="nav-item">
-        <%= link_to "So Bad", category_path("bad"), class: help_bad %>
+      <li class="nav-item" id="logo_switch">
+        <%= link_to "So Bad", main_app.category_path("bad"), class: help_bad %>
       </li>
-      <li class="nav-item">
-        <%= link_to "So Good", category_path("good"), class: help_good %>
+      <li class="nav-item" id="logo_switch">
+        <%= link_to "So Good", main_app.category_path("good"), class: help_good %>
       </li>
     </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@
               <% if current_user.followers.any? %>
                 <% current_user.followers.each do |follower| %>
                   <%= link_to follower.followable.username,
-                  user_path(follower.followable),
+                  main_app.user_path(follower.followable),
                   class: "dropdown-item" %>
                 <% end %>
               <% else %>
@@ -45,46 +45,43 @@
           </div>
           <% if @category != nil %>
             <li class="nav-item">
-              <%= link_to "Share Story", new_category_story_path(@category.name), class: "nav-link" %>
+              <%= link_to "Share Story", main_app.new_category_story_path(@category.name), class: "nav-link" %>
             </li>
           <% else %>
           <% end %>
           <li class="nav-item">
-            <%= link_to "My stories", user_path(current_user.id), class: "nav-link" %>
+            <%= link_to "My stories", main_app.user_path(current_user.id), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Duel", duel_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Map", root_path, class: "nav-link" %>
+            <%= link_to "Cities", main_app.root_path, class: "nav-link" %>
           </li>
         </ul>
         <ul class="navbar-nav text-right">
+          <li class="nav-item">
+            <%= link_to pluralize(Notification.unread_count(current_user), 'Notification'), notifications_path, :class => Notification.unread_count(current_user) > 0 ? 'badge badge-succes mr-3' : 'badge badge-danger mr-3' %>
+          </li>
           <p class="navbar-text">Logged in as
             <strong><%= current_user.username %></strong>
           </p>
           <li class="nav-item">
-            <%= link_to 'Edit profile', edit_user_registration_path, :class => "nav-link" %>
+            <%= link_to 'Edit profile', main_app.edit_user_registration_path, :class => "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "nav-link" %>
+            <%= link_to "Logout", main_app.destroy_user_session_path, method: :delete, :class => "nav-link" %>
           </li>
         </ul>
       <% else %>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <%= link_to "Duel", duel_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Map", root_path, class: "nav-link" %>
+            <%= link_to "Cities", main_app.root_path, class: "nav-link" %>
           </li>
         </ul>
         <ul class="navbar-nav text-right">
           <li class="nav-item">
-            <%= link_to 'Login', new_user_session_path, :class => "nav-link" %>
+            <%= link_to 'Login', main_app.new_user_session_path, :class => "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign up", new_user_registration_path, :class => "nav-link" %>
+            <%= link_to "Sign up", main_app.new_user_registration_path, :class => "nav-link" %>
           </li>
         </ul>
       <% end %>
