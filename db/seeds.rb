@@ -25,6 +25,9 @@ user.save!
   user.save!
 end
 
+#Locations
+30.times { Location.create(latitude: rand(5004..5343)/100, longitude: rand(1455..2200)/100)}
+
 good_titles = [
   'Yes!', 'Hurray!', 'This is really cool!', ':)', 'Nice!', 'Landed a job!',
   ':D', 'Best day ever!', 'Happy!', 'Proud.', 'LOL', 'Lucky','Landed kick-flip',
@@ -65,7 +68,6 @@ User.all.each do |user|
       story.category_id = 1
       story.save!
     end
-  else
   end
 end
 
@@ -82,7 +84,6 @@ User.all.each do |user|
       story.category_id = 2
       story.save!
     end
-  else
   end
 end
 

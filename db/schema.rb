@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_150421) do
+ActiveRecord::Schema.define(version: 2019_02_20_105111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 2019_02_19_150421) do
     t.index ["user_id"], name: "index_followers_on_user_id"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stories", force: :cascade do |t|
     t.string "title"
     t.text "text"
@@ -70,7 +77,9 @@ ActiveRecord::Schema.define(version: 2019_02_19_150421) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
+    t.bigint "location_id"
     t.index ["category_id"], name: "index_stories_on_category_id"
+    t.index ["location_id"], name: "index_stories_on_location_id"
     t.index ["user_id"], name: "index_stories_on_user_id"
   end
 
@@ -102,6 +111,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_150421) do
   add_foreign_key "comments", "users"
   add_foreign_key "followers", "users"
   add_foreign_key "stories", "categories"
+  add_foreign_key "stories", "locations"
   add_foreign_key "stories", "users"
   add_foreign_key "votes", "stories"
   add_foreign_key "votes", "users"
