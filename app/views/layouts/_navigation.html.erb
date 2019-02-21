@@ -53,6 +53,9 @@
             <%= link_to "My stories", user_path(current_user.id), class: "nav-link" %>
           </li>
           <li class="nav-item">
+            <%= link_to "Duel", duel_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "Map", root_path, class: "nav-link" %>
           </li>
         </ul>
@@ -69,9 +72,9 @@
         </ul>
       <% else %>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <% if @category != nil %>
-          <% else %>
-          <% end %>
+          <li class="nav-item">
+            <%= link_to "Duel", duel_path, class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= link_to "Map", root_path, class: "nav-link" %>
           </li>

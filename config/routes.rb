@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  get '/duel/', to: 'static_pages#show'
+
   resources :categories, only: :show, path: "" do
     resources :stories do
       resources :comments, only: :create
@@ -18,5 +20,8 @@ Rails.application.routes.draw do
       post '/down_vote/:id', to: 'votes#create_down', as: 'down'
     end
   end
+
+
+
 
 end
