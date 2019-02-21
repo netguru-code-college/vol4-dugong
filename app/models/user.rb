@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   def follow(user)
     followers.create(followable: user)
+    Notification.create(notify_type: 'follower', actor: self, user: user)
   end
 
   def unfollow(user)
