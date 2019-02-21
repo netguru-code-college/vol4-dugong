@@ -3,7 +3,7 @@
     <h5 class="card-title"><%= story.title %>
       by
       <%= link_to User.find(story.user_id).username, user_path(story.user_id) %>
-      <h6 class="card-subtitle mb-2 text-muted">Location</h6>
+      <h6 class="card-subtitle mb-2 text-muted"><%= story.location.city.name %></h6>
       <p class="card-text"><%= story.text %></p>
 
       <% if story.picture.attached? %>
