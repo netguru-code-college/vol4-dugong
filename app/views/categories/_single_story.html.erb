@@ -2,7 +2,7 @@
   <div class="card-body">
     <h5 class="card-title"><%= story.title %>
       by
-      <%= link_to User.find(story.user_id).username, user_path(story.user_id) %>
+      <%= link_to User.find(story.user_id).username, main_app.user_path(story.user_id) %>
       <h6 class="card-subtitle mb-2 text-muted">Location</h6>
       <p class="card-text"><%= story.text %></p>
 
@@ -15,16 +15,16 @@
           <%= story.created_at.strftime("%Y-%m-%d").to_s %></small>
       </p>
       <div class="btn-group" role="group" aria-label="Basic example">
-        <%= link_to "View", category_story_path(story.category_id, story.id), class: "btn btn-outline-primary" %>
+        <%= link_to "View", main_app.category_story_path(story.category_id, story.id), class: "btn btn-outline-primary" %>
         <% if user_signed_in? %>
           <% if Vote.where(user_id: current_user.id, story_id: story.id).empty? %>
-            <%= link_to raw("&#8595;"), category_story_down_path(story.category_id, story.id), method: :post, class: "btn btn-secondary"%>
-            <%= link_to raw("&#8593;"), category_story_up_path(story.category_id, story.id), method: :post, class: "btn btn-" + hlp_class %>
+            <%= link_to raw("&#8595;"), main_app.category_story_down_path(story.category_id, story.id), method: :post, class: "btn btn-secondary"%>
+            <%= link_to raw("&#8593;"), main_app.category_story_up_path(story.category_id, story.id), method: :post, class: "btn btn-" + hlp_class %>
           <% else %>
             <button type="button" class="btn btn-outline-secondary" disabled>Already voted</button>
           <% end %>
         <% else %>
-          <%= link_to "Login to vote", new_user_session_path, class: "btn btn-outline-primary" %>
+          <%= link_to "Login to vote", main_app.new_user_session_path, class: "btn btn-outline-primary" %>
         <% end %>
       </div>
       <br>
