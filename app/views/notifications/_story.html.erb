@@ -1,6 +1,6 @@
-<div class="notification-head">
+<div class="media-heading">
   <%= link_to notification.actor.username, main_app.user_path(notification.actor) %> has commented in
 </div>
-<div class="notification-body">
+<div class="media-content">
   <%= link_to notification.target.title, main_app.category_story_path(notification.target.category_id, notification.target) %>
 </div>
