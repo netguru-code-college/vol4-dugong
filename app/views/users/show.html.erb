@@ -1,5 +1,5 @@
 <br/>
-<h3><%= @user == current_user ? 'My' : @user.username %> stories:</h3>
+<h4><%= @user == current_user ? 'My' : @user.username %> stories:</h4>
 <%= render "follow/follow_toggle" %>
 <br/>
 <% if @user.stories.count == 0 %>
