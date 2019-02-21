@@ -19,6 +19,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
+gem 'geocoder', '~> 1.5', '>= 1.5.1'
+
 gem "aws-sdk-s3", require: false
 gem 'faker'
 gem 'notifications', '~> 0.6.0'

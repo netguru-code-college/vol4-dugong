@@ -13,10 +13,18 @@ def show
 end
 
 def create
+  city_name = Geocoder.search("#{params[:story][:latitude]},#{params[:story][:longitude]}").first.city
+  city_name = "almost nowhere" if city_name.nil?
+  @city = City
+            .where(name: city_name).first || City.create(name: city_name)
   @location = Location
                 .where(latitude: params[:story][:latitude])
                 .where(longitude: params[:story][:longitude])
-                .first || Location.create(latitude: params[:story][:latitude], longitude: params[:story][:longitude])
+                .first ||
+              Location
+                .create(latitude: params[:story][:latitude],
+                        longitude: params[:story][:longitude],
+                        city: @city)
   @story = current_user.stories.build(story_params)
   @story.category = @category
   @story.location = @location
@@ -40,10 +48,10 @@ private
 
   # Set up marker in last location
   def last_location
-    if current_user.stories.last.valid?
+    if !current_user.stories.last.nil?
       current_user.stories.last.location
     else
-      Location.build(latitude: 53.1235, longitude: 18.0084)
+      Location.new(latitude: 53.1235, longitude: 18.0084)
     end
   end
 end
