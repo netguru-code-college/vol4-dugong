@@ -1,8 +1,6 @@
-<div class=''>
-  <%= link_to notification.actor.email, main_app.user_path(notification.actor) %> has commented in
-  <%= link_to notification.second_target.text, main_app.user_story_path(notification.user, notification.second_target) %>
+<div class="notification-head">
+  <%= link_to notification.actor.username, main_app.user_path(notification.actor) %> has commented in
 </div>
-
-<div class=''>
-  <%= notification.target.body %>
+<div class="notification-body">
+  <%= link_to notification.target.title, main_app.category_story_path(notification.target.category_id, notification.target) %>
 </div>

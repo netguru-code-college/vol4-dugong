@@ -12,6 +12,7 @@ class Comment < ApplicationRecord
       notify_type: 'story',
       actor: self.user,
       user: self.story.user,
-      target: self.story)
+      target: self,
+      second_target: self.story)
   end
 end
