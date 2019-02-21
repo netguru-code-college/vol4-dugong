@@ -40,10 +40,10 @@ private
 
   # Set up marker in last location
   def last_location
-    if current_user.stories.last.valid?
+    if !current_user.stories.last.nil?
       current_user.stories.last.location
     else
-      Location.build(latitude: 53.1235, longitude: 18.0084)
+      Location.new(latitude: 53.1235, longitude: 18.0084)
     end
   end
 end
