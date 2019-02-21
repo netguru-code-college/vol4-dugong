@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_20_105111) do
+ActiveRecord::Schema.define(version: 2019_02_21_104752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 2019_02_20_105111) do
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.bigint "user_id"
@@ -67,6 +73,8 @@ ActiveRecord::Schema.define(version: 2019_02_20_105111) do
     t.decimal "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "city_id"
+    t.index ["city_id"], name: "index_locations_on_city_id"
   end
 
   create_table "stories", force: :cascade do |t|
@@ -110,6 +118,7 @@ ActiveRecord::Schema.define(version: 2019_02_20_105111) do
   add_foreign_key "comments", "stories"
   add_foreign_key "comments", "users"
   add_foreign_key "followers", "users"
+  add_foreign_key "locations", "cities"
   add_foreign_key "stories", "categories"
   add_foreign_key "stories", "locations"
   add_foreign_key "stories", "users"
