@@ -26,7 +26,14 @@ user.save!
 end
 
 #Locations
-30.times { Location.create(latitude: rand(5004..5343)/100, longitude: rand(1455..2200)/100)}
+30.times do |n|
+  lat = rand(5004..5343)/100
+  long = rand(1455..2200)/100
+  city_name = Geocoder.search("#{lat},#{long}").first.city
+  city_name = "almost nowhere" if city_name.nil?
+  city = City.where(name: city_name).first || City.create(name: city_name)
+   Location.create(latitude: lat, longitude: long, city: city)
+end
 
 good_titles = [
   'Yes!', 'Hurray!', 'This is really cool!', ':)', 'Nice!', 'Landed a job!',
@@ -65,6 +72,7 @@ User.all.each do |user|
       download = open('https://source.unsplash.com/320x240/?sad')
       story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
       story.user_id = user.id
+      story.location_id = rand(1..Location.count)
       story.category_id = 1
       story.save!
     end
@@ -81,6 +89,7 @@ User.all.each do |user|
       download = open('https://source.unsplash.com/320x240/?happy')
       story.picture.attach(io: download, filename: "story_img_#{story.id}.jpg")
       story.user_id = user.id
+      story.location_id = rand(1..Location.count)
       story.category_id = 2
       story.save!
     end
