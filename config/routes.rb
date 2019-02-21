@@ -13,12 +13,10 @@ Rails.application.routes.draw do
   resources :categories, only: :show, path: "" do
     resources :stories do
       resources :comments, only: :create
- 
+
       post '/up_vote/:id', to: 'votes#create_up', as: 'up'
       post '/down_vote/:id', to: 'votes#create_down', as: 'down'
     end
   end
-
-
 
 end

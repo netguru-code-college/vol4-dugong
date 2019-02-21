@@ -1,5 +1,10 @@
 <br/>
-<h4><%= @user == current_user ? 'My' : @user.username %> stories: <%= render "follow/follow_toggle" %></h4>
+<h4><%= @user == current_user ? 'My' : @user.username %> stories:
+<% if user_signed_in? %>
+  <%= render "follow/follow_toggle" %></h4>
+<% else %>
+  <%= link_to "Login to follow users", new_user_session_path, class: "btn btn-outline-primary btn-sm" , disabled: true %></h4>
+<% end %>
 <br/>
 <% if @user.stories.count == 0 %>
   <h2>. . . no stories :(</h2>
