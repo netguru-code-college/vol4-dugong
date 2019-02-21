@@ -53,7 +53,7 @@
             <%= link_to "My stories", main_app.user_path(current_user.id), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Map", main_app.root_path, class: "nav-link" %>
+            <%= link_to "Cities", main_app.root_path, class: "nav-link" %>
           </li>
         </ul>
         <ul class="navbar-nav text-right">
@@ -72,11 +72,8 @@
         </ul>
       <% else %>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <% if @category != nil %>
-          <% else %>
-          <% end %>
           <li class="nav-item">
-            <%= link_to "Map", main_app.root_path, class: "nav-link" %>
+            <%= link_to "Cities", main_app.root_path, class: "nav-link" %>
           </li>
         </ul>
         <ul class="navbar-nav text-right">

@@ -1,14 +1,8 @@
 <div class="card border-<%= hlp_class %>" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title"><%= story.title %>
-      by
-<<<<<<< HEAD
-      <%= link_to User.find(story.user_id).username, user_path(story.user_id) %>
-      <h6 class="card-subtitle mb-2 text-muted"><%= story.location.city.name %></h6>
-=======
-      <%= link_to User.find(story.user_id).username, main_app.user_path(story.user_id) %>
-      <h6 class="card-subtitle mb-2 text-muted">Location</h6>
->>>>>>> master
+    <h5 class="card-title"><%= story.title %> by <%= link_to User.find(story.user_id).username, main_app.user_path(story.user_id) %>
+    </h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= story.location.city.name %></h6> 
       <p class="card-text"><%= story.text %></p>
 
       <% if story.picture.attached? %>
