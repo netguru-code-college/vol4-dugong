@@ -14,8 +14,8 @@
     <small class="text-muted">Created: <%= story.created_at.strftime("%Y-%m-%d").to_s %></small></p>
     <p class="card-text">
     <small class="text-muted"><%= a = story.votes.where(updown: true).count %> <%= a == 1 ? 'person is ' : 'people are '%>touched
-    and <%= a = story.votes.where(updown: false).count %> <%= a == 1 ? 'person does ' : 'people do '%>not feel it</small></p> 
-   
+    and <%= a = story.votes.where(updown: false).count %> <%= a == 1 ? 'person does ' : 'people do '%>not feel it</small></p>
+
     <div class="btn-group" role="group" aria-label="Basic example">
       <% if user_signed_in? %>
         <% if Vote.where(user_id: current_user.id, story_id: story.id).empty? %>
@@ -23,6 +23,7 @@
           <%= link_to "Really " + @category.name, category_story_up_path(story.category_id, story.id), method: :post, class: "btn btn-" + hlp_class %>
         <% else %>
           <button type="button" class="btn btn-outline-secondary" disabled>Already voted</button>
+          <%= link_to "Return to " + @category.name, category_path(story.category_id), class: "btn btn-outline-" + hlp_class %>
         <% end %>
       <% else %>
         <%= link_to "Login to vote", new_user_session_path, class: "btn btn-outline-primary" , disabled: true %>

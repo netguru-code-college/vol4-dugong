@@ -1,25 +1,25 @@
 <%if @category != nil
     if @category.name == "bad"
-      help_nav = "background: linear-gradient(to right, #cfe5fc, #f8f9fa);"
-      help_bad = "btn btn-outline-primary" + " " + "active"
-      help_good = "btn btn-outline-danger"
+      help_nav = "background: linear-gradient(to right, #b8daff, #f8f9fa);"
+      help_bad = "bad_a btn btn-outline-primary" + " " + "active"
+      help_good = "good btn btn-outline-danger"
     else
-      help_nav = "background: linear-gradient(to right, #f6d5d8, #f8f9fa);"
-      help_bad = "btn btn-outline-primary"
-      help_good = "btn btn-outline-danger" + " " + "active"
+      help_nav = "background: linear-gradient(to right, #f5c6cb, #f8f9fa);"
+      help_bad = "bad btn btn-outline-primary"
+      help_good = "good_a btn btn-outline-danger" + " " + "active"
     end
   else
     help_nav = "background-color: #f8f9fa"
-    help_bad = "btn btn-outline-primary"
-    help_good = "btn btn-outline-danger"
+    help_bad = "bad btn btn-outline-primary"
+    help_good = "good btn btn-outline-danger"
   end%>
 
   <nav class="navbar navbar-expand-lg navbar-light" style="<%= help_nav %>">
     <ul class="nav nav-pills">
-      <li class="nav-item" id="logo_switch">
+      <li class="nav-item">
         <%= link_to "So Bad", category_path("bad"), class: help_bad %>
       </li>
-      <li class="nav-item" id="logo_switch">
+      <li class="nav-item">
         <%= link_to "So Good", category_path("good"), class: help_good %>
       </li>
     </ul>
@@ -29,6 +29,20 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <% if user_signed_in? %>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My following users</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% if current_user.followers.any? %>
+                <% current_user.followers.each do |follower| %>
+                  <%= link_to follower.followable.username,
+                  user_path(follower.followable),
+                  class: "dropdown-item" %>
+                <% end %>
+              <% else %>
+                <a class="dropdown-item" href="#">You don't follow any user</a>
+              <% end %>
+            </div>
+          </div>
           <% if @category != nil %>
             <li class="nav-item">
               <%= link_to "Share Story", new_category_story_path(@category.name), class: "nav-link" %>
@@ -41,22 +55,6 @@
           <li class="nav-item">
             <%= link_to "Map", root_path, class: "nav-link" %>
           </li>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              My following users
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <% if current_user.followers.any? %>
-                <% current_user.followers.each do |follower| %>
-                  <%= link_to follower.followable.username, 
-                  user_path(follower.followable), 
-                  class: "dropdown-item" %>
-                <% end %>
-              <% else %>
-                <a class="dropdown-item" href="#">You don't follow any user</a>
-              <% end %>
-            </div>
-          </div>
         </ul>
         <ul class="navbar-nav text-right">
           <p class="navbar-text">Logged in as
